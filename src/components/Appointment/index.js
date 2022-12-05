@@ -15,6 +15,15 @@ import Form from "./Form";
 
 export default function Appointment(props) {
   
+  // Save Interview
+  const save = function(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer,
+    }
+    props.bookInterview(props.id, interview);
+  }
+
   // Mode constants
   const EMPTY = "EMPTY";
   const SHOW  = "SHOW";
@@ -47,7 +56,8 @@ export default function Appointment(props) {
         {mode === CREATE && 
           <Form 
             interviewers={props.interviewers}
-            onSave={() => transition(SHOW, true)}
+            // onSave={() => transition(SHOW, true)}
+            onSave={save}
             onCancel={() => back()}
           />
         }

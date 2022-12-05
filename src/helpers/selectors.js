@@ -1,12 +1,8 @@
 export function getAppointmentsForDay(state, day) {
-  let dayObj;
-  for(let elem of state.days) {
-    if (elem.name === day) dayObj = elem;
-  }
+  const dayObj = state.days.find(elem => elem.name === day);
   if (dayObj === undefined) return [];
-  const appArr = dayObj.appointments;
   const appointments = [];
-  appArr.forEach(num => {
+  dayObj.appointments.forEach(num => {
     appointments.push(state.appointments[num]);
   })
   return appointments;
@@ -24,19 +20,14 @@ export function getInterview(state, interview) {
       avatar: interviewerObj.avatar,
     }
   }
-  
   return interviewObj;
 }
 
 export function getInterviewersForDay(state, day) {
-  let dayObj;
-  for(let elem of state.days) {
-    if (elem.name === day) dayObj = elem;
-  }
+  const dayObj = state.days.find(elem => elem.name === day);
   if (dayObj === undefined) return [];
-  const interviewersArr = dayObj.interviewers;
   const interviewers = [];
-  interviewersArr.forEach(num => {
+  dayObj.interviewers.forEach(num => {
     interviewers.push(state.interviewers[num]);
   })
   return interviewers;

@@ -18,7 +18,9 @@ export default function useApplicationData() {
       state = {...state, days, appointments, interviewers}
     };
     const SET_INTERVIEW = action => {
-
+      const days = action.days;
+      const appointments = action.appointments;
+      state = {...state, days, appointments}
     };
     const reducers = {
       SET_DAY,
@@ -37,17 +39,8 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-
-  // Initialise state object
-  /* const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {},
-  }); */
-
   // Helper functions for setState
-  // const setDay = day => setState(prev => ({ ...prev, day }));
+  const setDay = day => dispatch({type: 'SET_DAY', day});
   // const setDays = days => setState(prev => ({...prev, days }));
   // const setAppointments = appointments => setState(prev => ({...prev, appointments }));
 
@@ -59,26 +52,18 @@ export default function useApplicationData() {
       Axios.get('/api/interviewers')
     ])
       .then(resolutions => {
-        setState(prev => ({
-          ...prev,
+        dispatch({
+          type: 'SET_APPLICATION_DATA',
           days: resolutions[0].data,
           appointments: resolutions[1].data,
           interviewers: resolutions[2].data,
-        }));
+        })
       })
       .catch(err => {
         console.log('Error from Axios GET request to /api/days', err.message);
       });
 
   }, [])
-
-  // // Update Spots
-  // const updateSpots = function() {
-  //   return Axios.get('/api/days')
-  //     .then((res) => {
-  //       setState(prev => ({...prev, days: res.data}));
-  //     })
-  // }
 
   // Alt update spots
   const getFreeSpotsForDay = (state, newAppointments) => {
@@ -145,7 +130,7 @@ export default function useApplicationData() {
     })
       .then(() => {
         // Plug days straight into appointments
-        setState(prev => ({ ...prev, appointments, days }));
+        dispatch({type: 'SET_INTERVIEW', appointments, days });
       });
   }
 
@@ -168,7 +153,7 @@ export default function useApplicationData() {
     return Axios.delete(`/api/appointments/${id}`)
       .then(() => {
         // Plug days straight into appointments
-        setState(prev => ({ ...prev, appointments, days }));
+        dispatch({type: 'SET_INTERVIEW', appointments, days });
       })
   }
 

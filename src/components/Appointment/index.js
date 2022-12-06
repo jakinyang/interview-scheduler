@@ -21,7 +21,6 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     }
-    console.log('Interview Obj from Save', interview)
     if (!interview.interviewer || !interview.student) {
       return transition(ERROR_INPUT);
     };

@@ -20,7 +20,6 @@ export default function Form(props) {
       <section className="appointment__card-left">
         <form
           autoComplete="off"
-          onChange={(event) => setStudent(event.target.value)}
           onSubmit={(event) => event.preventDefault()} >
           <input
             className="appointment__create-input text--semi-bold"
@@ -28,6 +27,9 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             value={student}
+            onChange={(event) => {
+              setStudent(event.target.value);
+            }}
           />
         </form>
         <InterviewerList

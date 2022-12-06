@@ -48,6 +48,30 @@ export default function Application(props) {
   // Booking Interview
   const bookInterview = function(id, interview) {
     console.log(id, interview);
+    // Update appointment object with interview details
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    console.log(appointment);
+
+    // Update appointments object from state with new appointment
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    console.log(appointments);
+
+    // Set state with new, updated appointments object
+    
+
+    // Make Axios put to persist current state in database memory
+    return Axios.put(`/api/appointments/${id}`, {
+      interview
+    })
+    .then(() => {
+      setState(prev => ({...prev, appointments}));
+    });
   }
 
   // Getting an appointment object by day and the current state

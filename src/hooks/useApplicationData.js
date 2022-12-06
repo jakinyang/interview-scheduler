@@ -1,18 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import Axios from "axios";
 
 
 export default function useApplicationData() {
-  // Initialise state object
-  const [state, setState] = useState({
+
+
+  // Reducer Implementation
+  function reducer(state, action) {
+    // Constants for Action.type
+    const SET_DAY = action => {
+      state.day = action.day
+    };
+    const SET_APPLICATION_DATA = action => {
+      const days = action.days;
+      const appointments = action.appointments;
+      const interviewers = action.interviewers;
+      state = {...state, days, appointments, interviewers}
+    };
+    const SET_INTERVIEW = action => {
+
+    };
+    const reducers = {
+      SET_DAY,
+      SET_APPLICATION_DATA,
+      SET_INTERVIEW,
+      default: state,
+    };
+
+    return reducers[action.type](action) || reducers.default;
+  }
+
+  const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
     days: [],
     appointments: {},
     interviewers: {},
   });
 
+
+  // Initialise state object
+  /* const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {},
+    interviewers: {},
+  }); */
+
   // Helper functions for setState
-  const setDay = day => setState(prev => ({ ...prev, day }));
+  // const setDay = day => setState(prev => ({ ...prev, day }));
   // const setDays = days => setState(prev => ({...prev, days }));
   // const setAppointments = appointments => setState(prev => ({...prev, appointments }));
 
@@ -36,6 +71,14 @@ export default function useApplicationData() {
       });
 
   }, [])
+
+  // // Update Spots
+  // const updateSpots = function() {
+  //   return Axios.get('/api/days')
+  //     .then((res) => {
+  //       setState(prev => ({...prev, days: res.data}));
+  //     })
+  // }
 
   // Alt update spots
   const getFreeSpotsForDay = (state, newAppointments) => {

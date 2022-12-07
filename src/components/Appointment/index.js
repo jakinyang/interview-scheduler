@@ -21,9 +21,9 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     }
-    if (!interview.interviewer || !interview.student) {
+    /* if (!interview.interviewer || !interview.student) {
       return transition(ERROR_INPUT);
-    };
+    }; */
     transition(SAVING, true);
     bookInterview(id, interview)
       .then(() => {
@@ -65,7 +65,7 @@ export default function Appointment(props) {
   const SAVING = "SAVING";
   const DELETING = "DELETING";
   const CONFRIM = "CONFRIM";
-  const ERROR_INPUT = "ERROR_INPUT";
+  // const ERROR_INPUT = "ERROR_INPUT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   const EDIT = "EDIT";
@@ -140,12 +140,12 @@ export default function Appointment(props) {
           onConfirm={() => confirmDelete()}
         />
       }
-      {mode === ERROR_INPUT &&
+      {/* {mode === ERROR_INPUT &&
         <Error
           message='MISSING FORM FIELDS: INPUT BOTH STUDENT AND INTERVIEWER'
           onClose={() => back()}
         />
-      }
+      } */}
       {mode === ERROR_SAVE &&
         <Error
           message='ERROR WITH SAVE'

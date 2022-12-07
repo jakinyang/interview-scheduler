@@ -30,7 +30,7 @@ export default function Appointment(props) {
         transition(SHOW, true);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
         transition(ERROR_SAVE, true);
       });
   }
@@ -53,7 +53,7 @@ export default function Appointment(props) {
         transition(EMPTY);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
         transition(ERROR_DELETE, true)
       });
   }
@@ -85,7 +85,7 @@ export default function Appointment(props) {
     })
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={time} />
 
       {/* If the mode is EMPTY */}

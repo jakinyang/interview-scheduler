@@ -15,29 +15,29 @@ export default function useApplicationData() {
     const getFreeSpotsForDay = (state, newAppointments) => {
       // Get the current day
       const currentDay = state.days.find((day) => day.name === state.day);
-      console.log("CurrentDay: ", currentDay);
+      // console.log("CurrentDay: ", currentDay);
 
       // Then get the index of the current day in the days array (this will come in handy later)
       const currentDayIndex = state.days.findIndex(day => day.name === state.day);
-      console.log('Current day index: ', currentDayIndex);
+      // console.log('Current day index: ', currentDayIndex);
 
       // This is the list of all appointments (going to use to filter in next step)
       const listOfAppointmentIds = currentDay.appointments;
-      console.log("List of appointmentIds: ", listOfAppointmentIds);
+      // console.log("List of appointmentIds: ", listOfAppointmentIds);
 
       // Here we're getting a shorter list of appoitnments that have no interview (are free spots!)
       const listOfFreeAppointments = listOfAppointmentIds.filter(
         (id) => !newAppointments[id].interview
       );
-      console.log("List of free appointments: ", listOfFreeAppointments);
+      // console.log("List of free appointments: ", listOfFreeAppointments);
 
       // If we count how many appointments don't have interviews we get the number of spots
       const amountOfFreeSpots = listOfFreeAppointments.length;
-      console.log("amoutn of free spots: ", amountOfFreeSpots);
+      // console.log("amoutn of free spots: ", amountOfFreeSpots);
 
       // We're going to take the old currentDay object, and update how many spots it has
       const newDayObj = { ...currentDay, spots: amountOfFreeSpots };
-      console.log("New Day Object: ", newDayObj);
+      // console.log("New Day Object: ", newDayObj);
 
       // Make a new copy of the whole days array
       const newDays = [...state.days];
@@ -46,7 +46,7 @@ export default function useApplicationData() {
       newDays[currentDayIndex] = newDayObj;
 
       // And we're going to return that whole days array so we can plug it into setState later!
-      console.log("New Days Array: ", newDays);
+      // console.log("New Days Array: ", newDays);
       return newDays;
     };
 
@@ -130,14 +130,14 @@ export default function useApplicationData() {
     const ws = new WebSocket(wsURL);
     ws.onopen = () => {
       console.log('Websocket Handshake complete');
-      ws.send('Hello from the client!');
-      ws.send('ping');
+      // ws.send('Hello from the client!');
+      // ws.send('ping');
       ws.onmessage = event => {
         console.log(`Message received: ${event.data}`);
         const data = JSON.parse(event.data);
         if (data.type === 'SET_INTERVIEW') {
           const { type, id, interview } = data;
-          console.log(`Update appointments call received. Data: Type: ${type} id: ${id} interview: ${interview}`)
+          // console.log(`Update appointments call received. Data: Type: ${type} id: ${id} interview: ${interview}`)
           dispatch({ type: type, id, interview });
         }
       }

@@ -1,10 +1,40 @@
 # Interview Scheduler
 
-:calendar: ***Interview Scheduler*** :calendar: is a student project at [Lighthouse Labs](https://www.lighthouselabs.ca/) to demonstrate using the :atom_symbol: React :atom_symbol: Front-End library as well as testing frameworks and deployment with continuous integregation.
+## Intro
 
-The site is currently live and deployed with Netlify and hosted on Github and Railway.
+:calendar: ***Interview Scheduler*** :calendar: is a student project at [Lighthouse Labs](https://www.lighthouselabs.ca/).
 
-If you would like to visit this project in its production version, please visit [here](https://subtle-valkyrie-5383b3.netlify.app/)!
+* A single page application (SPA) built using :electron: React :electron:.
+* Data persisted by the API server using a :elephant: PostgreSQL database :elephant:.
+* The client application communicates with an API server over :abacus: HTTP :abacus:, using the :wavy_dash: JSON format :wavy_dash:.
+* Multi-client communication via :electric_plug: Websocket :electric_plug:
+* :black_joker: Jest :black_joker: tests are used through the development of the project.
+* Frontend prototypign done with :books: Storybook :books:, and End-to-End testing done with :evergreen_tree: Cypress :evergreen_tree:.
+
+*The site is currently live and deployed with Netlify and hosted on Github and Railway.*
+
+**If you would like to visit this project in its production version, please visit *[here](https://subtle-valkyrie-5383b3.netlify.app/)*!**
+
+## Tech Stack
+
+### Front-End
+* React
+* Sass
+
+### Back-End
+* Node
+* PostgreSQL
+
+### Testing
+* Storybook
+* Jest
+* Cypress
+
+### Deployment
+* Github
+* CircleCI
+* Railway
+* Netlify
 
 ## Gallery
 

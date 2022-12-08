@@ -24,7 +24,7 @@ If you would like to visit this project in its production version, please visit 
 
 !["Delete Interviews"](./docs/application_delete_interview.png)
 
-> Delete uneeded interviews, complete with confirmation landing page for safety
+> Delete interviews, complete with confirmation landing page for safety
 
 ### Sidebar with List of Days
 

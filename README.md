@@ -1,6 +1,6 @@
 # Interview Scheduler {#intro}
 
-:caledar: ***Interview Scheduler*** :caledar: is a student project at [Lighthouse Labs](https://www.lighthouselabs.ca/) to demonstrate using the :atom_symbol: React :atom_symbol: Front-End library as well as testing frameworks and deployment with continuous integregation.
+:calendar: ***Interview Scheduler*** :calendar: is a student project at [Lighthouse Labs](https://www.lighthouselabs.ca/) to demonstrate using the :atom_symbol: React :atom_symbol: Front-End library as well as testing frameworks and deployment with continuous integregation.
 
 The site is currently live and deployed with Netlify and hosted on Github and Railway.
 

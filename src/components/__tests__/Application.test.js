@@ -198,35 +198,7 @@ describe("Application", () => {
 
   });
 
-  /* it("shows the delete error when failing to delete an existing appointment", async () => {
-    axios.put.mockRejectedValueOnce();
-
-    // 1. Render the Application.
-    const { container } = render(<Application />);
-
-    // 2. Wait until the text "Archie Cohen" is displayed.
-    await waitForElement(() => getByText(container, 'Archie Cohen'));
-
-    // 3. Click the "Delete" button on the booked appointment.
-    const appointment = getAllByTestId(container, "appointment").find(
-      appointment => queryByText(appointment, "Archie Cohen")
-    );
-
-    fireEvent.click(getByAltText(appointment, 'Delete'));
-    
-    // 4. Check that the confirmation message is shown.
-    expect(getByText(appointment, 'Delete the appointment?')).toBeInTheDocument();
-    
-    // 5. Click the "Confirm" button on the confirmation.
-    fireEvent.click(getByText(appointment, 'Confirm'));
-    
-    // 6. Check that the element with the text "Deleting" is displayed.
-    expect(getByText(appointment, /deleting/i)).toBeInTheDocument();
-    
-    await waitForElement(() => getByText("Error"));
-
-    expect(getByText(appointment, 'ERROR WITH DELETE')).toBeInTheDocument();
-  }); */
+  
 })
 
 

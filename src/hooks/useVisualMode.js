@@ -11,7 +11,6 @@ export default function useVisualMode(initial) {
     setHistory(prev => ([...prev, newMode]));
   }
 
-
   // Back
   function back() {
     if (history.length <= 1) {

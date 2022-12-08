@@ -21,9 +21,6 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     }
-    /* if (!interview.interviewer || !interview.student) {
-      return transition(ERROR_INPUT);
-    }; */
     transition(SAVING, true);
     bookInterview(id, interview)
       .then(() => {
@@ -65,7 +62,6 @@ export default function Appointment(props) {
   const SAVING = "SAVING";
   const DELETING = "DELETING";
   const CONFRIM = "CONFRIM";
-  // const ERROR_INPUT = "ERROR_INPUT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
   const EDIT = "EDIT";
@@ -88,12 +84,10 @@ export default function Appointment(props) {
     <article className="appointment" data-testid="appointment">
       <Header time={time} />
 
-      {/* If the mode is EMPTY */}
       {mode === EMPTY && (
         <Empty onAdd={() => transition(CREATE)} />
       )}
 
-      {/* If the mode is SHOW */}
       {mode === SHOW && interview && (
         <Show
           student={interview.student}
@@ -103,7 +97,6 @@ export default function Appointment(props) {
         />
       )}
 
-      {/* If the mode is CREATE */}
       {mode === CREATE &&
         <Form
           interviewers={interviewers}
@@ -111,7 +104,6 @@ export default function Appointment(props) {
           onCancel={() => back()}
         />
       }
-      {/* If the mode is EDIT */}
       {mode === EDIT &&
         <Form
           student={interview.student}
@@ -121,31 +113,22 @@ export default function Appointment(props) {
           onCancel={() => back()}
         />
       }
-      {/* If the mode is SAVING */}
       {mode === SAVING &&
         <Status
           message='saving'
         />
       }
-      {/* If the mode is DELETING */}
       {mode === DELETING &&
         <Status
           message='deleting'
         />
       }
-      {/* If the mode is CONFRIM */}
       {mode === CONFRIM &&
         <Confirm
           onCancel={() => back()}
           onConfirm={() => confirmDelete()}
         />
       }
-      {/* {mode === ERROR_INPUT &&
-        <Error
-          message='MISSING FORM FIELDS: INPUT BOTH STUDENT AND INTERVIEWER'
-          onClose={() => back()}
-        />
-      } */}
       {mode === ERROR_SAVE &&
         <Error
           message='ERROR WITH SAVE'
